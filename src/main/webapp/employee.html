@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Employee CRUD</title>
+		<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script src="view/app.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<style>
+		a {
+			cursor: pointer;
+			background-color: lightblue;
+		}
+		</style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div ng-controller="EmployeeCRUDCtrl" class="border border-primary container" ng-init="getAllEmployees()">
+			<br />
+			<div class="text-center"> 
+				<h2>Employee Data Organizer</h2>
+			</div>
+			
+			<table>
+				<tr>
+					<td width="100">ID:</td>
+					<td><input type="text" id="id" ng-model="employee.id" /></td>
+				</tr>
+				<tr>
+					<td width="100">Name:</td>
+					<td><input type="text" id="name" ng-model="employee.name" /></td>
+				</tr>
+				<tr>
+					<td width="100">Role:</td>
+					<td><input type="text" id="role" ng-model="employee.role" /></td>
+				</tr>
+			</table>
+			
+			<br />
+			
+			<p style="color: green">{{message}}</p>
+			<p style="color: red">{{errorMessage}}</p>
+			
+			<br />
+			
+			<button type="button" class="btn btn-info" ng-click="getEmployee()">Get Employee</button> 
+			<button type="button" class="btn btn-info" ng-click="updateEmployee()">Update Employee</button> 
+			<button type="button" class="btn btn-info" ng-click="addEmployee()">Add Employee</button> 
+			<button type="button" class="btn btn-info" ng-click="deleteEmployee()">Delete Employee</button>
+	
+			<br /> <br /> 
+			
+			<button type="button" id="btnGetAllEmployees" class="btn btn-info" ng-click="getAllEmployees()">Get all Employees</button><br /> 
+			
+			<br /> <br />
+			
+			<table class="table table-bordered">
+				<thead>
+			      <tr>
+			        <th>#</th>
+			        <th>Name</th>
+			        <th>Role</th>
+			      </tr>
+			    </thead>
+	    		<tbody>
+				  <tr ng-repeat="emp in employees" ng-click="setEmployee($index)">
+				  	<td>{{ emp.id }}</td>
+				    <td>{{ emp.name }}</td>
+				    <td>{{ emp.role }}</td>
+				  </tr>
+				 </tbody>
+			</table>
+		</div>
+	</body>
+</html>
