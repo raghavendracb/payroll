@@ -21,7 +21,7 @@ pipeline {
       }
       post {
           success {
-              ech "build successful"
+              echo "build successful"
           }
       }
     }
