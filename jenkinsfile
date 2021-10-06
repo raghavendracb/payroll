@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage ('Initialize') {
         steps {
-            echo "PATH = ${PATH}"
-            echo "M2_HOME = ${M2_HOME}"
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
+            sh 'echo "PATH = ${PATH}"'
+            sh 'echo "M2_HOME = ${M2_HOME}"'
+            sh 'def dockerHome = tool "myDocker"'
+            sh 'env.PATH = "${dockerHome}/bin:${env.PATH}"'
         }
     }
     stage ('checkout') {
